@@ -118,7 +118,7 @@ textarea{
     margin-top: 0!important;
   }
 }
-@media (max-width:768px) {
+@media only screen and (max-width:768px) {
     #export{
       width: 95%;
     }
