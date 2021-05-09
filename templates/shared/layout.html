@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Moodle|Quiz Builder</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-wEmeIV1mKuiNpC+IOBjI7aAzPcEZeedi5yW5f2yOq55WWLwNGmvvx4Um1vskeMj0" crossorigin="anonymous">
+    <!-- icon -->
+    <script src="https://kit.fontawesome.com/e76fb70977.js" crossorigin="anonymous"></script>
+    <!-- google font -->
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@100;300;400;500;700;900&display=swap"
+        rel="stylesheet">
+    <!-- Own CSS -->
+    <link href="../../static/css/style.css" rel="stylesheet">
+
+</head>
+
+<body>
+    <main>
+        <!-- 側欄 -->
+        <div class="d-flex flex-column p-3 text-white bg-dark" id='sidebar'>
+            <a href="/" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto text-white text-decoration-none">
+                <img src="../../static/picture/moodle.svg" class="bi me-2" width="40" height="32">
+                <span class="fs-4">Quiz Builder</span>
+            </a>
+            <hr>
+            <ul class="nav nav-pills flex-column mb-auto">
+                <li class="nav-item">
+                    <a href="/" class="nav-link text-white {{index_active}}" aria-current="page">
+                        首頁
+                    </a>
+                </li>
+                <li>
+                    <a href="/builder" class="nav-link text-white {{builder_active}}">
+                        建立試題
+                    </a>
+                </li>
+                <li>
+                    <a href="/preview" class="nav-link text-white {{preview_active}}">
+                        預覽
+                    </a>
+                </li>
+                <li>
+                    <a href="/export" class="nav-link text-white {{export_active}}">
+                        匯出
+                    </a>
+                </li>
+                <li>
+                    <a href="/contact" class="nav-link text-white {{contact_active}}">
+                        反饋
+                    </a>
+                </li>
+            </ul>
+            <hr>
+            <span>Copyright © 2021 Yicheng. All rights reserved.</span>
+        </div>
+
+        <!-- body block -->
+        {%block body%}
+
+        {%endblock%}
+        <!-- body block -->
+    </main>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-p34f1UUtsS3wqzfto5wAAmdvj+osOnFyQFpp4Ua3gs/ZVWx6oOypYoCJhGGScy+8"
+        crossorigin="anonymous"></script>
+</body>

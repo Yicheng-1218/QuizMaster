@@ -1,0 +1,35 @@
+{%extends 'shared/layout.html'%}
+{%block body%}
+
+<div class="container position-relative">
+    <div id='TF_card' class="position-absolute top-50 start-50 translate-middle">
+        <div class="card text-center">
+            <form method="POST">
+                <div class="card-header my-3">
+
+                    <h5 class="card-title">{{TF_form.content.label}}</h5>
+                    {{TF_form.content(class='form-control',placeholder='請輸入題目內容')}}
+                </div>
+                <div class="card-body my-3">
+
+                    {%for subfield in TF_form.True_or_False%}
+                    <div class="form-check form-check-inline">
+                        {{subfield(class='form-check-input')}}
+                        {{subfield.label(class="form-check-label me-3")}}
+                    </div>
+                    {%endfor%}
+                    {{TF_form.submit(class='btn btn-primary input-group mt-3 tf_long_button')}}
+                    {{TF_form.hidden_tag()}}
+
+                </div>
+                <div class="card-footer text-muted my-3">
+                    {{TF_count}}個已添加
+                </div>
+            </form>
+
+
+        </div>
+    </div>
+</div>
+
+{%endblock%}

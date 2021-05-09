@@ -1,0 +1,47 @@
+{%extends 'shared/layout.html'%}
+{%block body%}
+
+<!-- 選擇試題方塊 -->
+<div class="container px-4 py-5 bg-light" id="hanging-icons">
+    <h2 class="pb-2 border-bottom">選擇試題種類</h2>
+    <div class="row g-4 py-5 row-cols-1 row-cols-lg-3">
+        <div class="col d-flex align-items-start">
+            <div class="icon-square bg-light text-dark flex-shrink-0 me-3">
+                <img src="../../static/picture/tick.svg" alt="tick.svg" width="64" height="64">
+            </div>
+            <div>
+                <h2>是非題</h2>
+                <p>是非題建立表單，擁有TURE以及FLASE兩種選項和題目方塊</p>
+                <a href="/builder/True_or_False">
+                    <button type="button" class="btn btn-primary  px-4 me-md-2 fw-bold">前往</button>
+                </a>
+            </div>
+        </div>
+        <div class="col d-flex align-items-start">
+            <div class="icon-square bg-light text-dark flex-shrink-0 me-3">
+                <img src="../../static/picture/checkbox.svg" alt="checkbox.svg" width="64" height="64">
+            </div>
+            <div>
+                <h2>選擇題</h2>
+                <p>選擇題建立表單，擁有四個空白選項，一個正確答案和題目方塊</p>
+                <a href="/builder/Multiple_choice">
+                    <button type="button" class="btn btn-primary  px-4 me-md-2 fw-bold">前往</button>
+                </a>
+            </div>
+        </div>
+        <div class="col d-flex align-items-start">
+            <div class="icon-square bg-light text-dark flex-shrink-0 me-3">
+                <img src="../../static/picture/pencil.svg" alt="pencil.svg" width="64" height="64">
+            </div>
+            <div>
+                <h2>簡答題</h2>
+                <p>簡答題建立表單，擁有一格答案方塊和題目方塊</p>
+                <a href="/builder/short_ans">
+                    <button type="button" class="btn btn-primary  px-4 me-md-2 fw-bold">前往</button>
+                </a>
+            </div>
+        </div>
+    </div>
+</div>
+
+{%endblock%}

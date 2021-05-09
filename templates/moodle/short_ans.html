@@ -1,0 +1,26 @@
+{%extends 'shared/layout.html'%}
+{%block body%}
+<div class="container position-relative">
+    <div id='TF_card' class="position-absolute top-50 start-50 translate-middle">
+        <div class="card text-center">
+            <form method="POST">
+                <div class="card-header my-3">
+
+                    <h5 class="card-title">{{SA_form.content.label}}</h5>
+                    {{SA_form.content(class='form-control',placeholder='請輸入題目內容')}}
+                </div>
+                <div class="card-body my-3">
+                    {{SA_form.answer_box(class='form-control',placeholder='如果有多個答案，請用空格隔開')}}
+                    {{SA_form.submit(class='btn btn-primary input-group my-3')}}
+                    {{SA_form.hidden_tag()}}
+                </div>
+                <div class="card-footer text-muted my-3 tf_long_button">
+                    {{SA_count}}個已添加
+                </div>
+            </form>
+
+
+        </div>
+    </div>
+</div>
+{%endblock%}

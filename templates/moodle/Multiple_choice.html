@@ -1,0 +1,39 @@
+{%extends 'shared/layout.html'%}
+{%block body%}
+<div class="container position-relative">
+    <div id='MC_card' class="position-absolute top-50 start-50 translate-middle">
+        <div class="card text-center">
+            <form method="POST">
+                <div class="card-header my-3">
+
+                    <h5 class="card-title">{{MC_form.content.label}}</h5>
+                    {{MC_form.content(class='form-control',placeholder='請輸入題目內容')}}
+                </div>
+                <div class="card-body my-3">
+
+                    <div class="input-group mb-3">
+                        {%for subfield in MC_form.Which_True%}
+                        <div class="form-check mx-auto">
+                            {{subfield(class='form-check-input')}}
+                            {%for field in MC_form%}
+                            {%if subfield.label.text==field.label.text%}
+                            {{field(class='form-control my-1',placeholder=field.label.text)}}
+                            {%endif%}
+                            {%endfor%}
+                        </div>
+                        {%endfor%}
+                    </div>
+                    {{MC_form.submit(class='btn btn-primary input-group')}}
+                    {{MC_form.hidden_tag()}}
+
+                </div>
+                <div class="card-footer text-muted my-2">
+                    {{MC_count}}個已添加
+                </div>
+            </form>
+
+
+        </div>
+    </div>
+</div>
+{%endblock%}
