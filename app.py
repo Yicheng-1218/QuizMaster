@@ -4,6 +4,7 @@ from flask.helpers import flash, make_response, send_file, send_from_directory
 from flask.wrappers import Response
 from forms import *
 from format import *
+import os
 
 app = Flask(__name__)
 
@@ -159,4 +160,6 @@ def contact():
 
 
 if __name__ == '__main__':
-    app.run()
+    port = int(os.environ.get("PORT", 5000))
+    # !正式入口
+    app.run(host='0.0.0.0', port=port)
