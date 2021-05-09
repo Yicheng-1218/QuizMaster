@@ -11,7 +11,7 @@ app = Flask(__name__)
 app.config['SECRET_KEY'] = '408637147'
 
 # web cache lifetime
-app.config['SEND_FILE_MAX_AGE_DEFAULT'] = 0
+# app.config['SEND_FILE_MAX_AGE_DEFAULT'] = 0
 
 
 @app.before_request
@@ -159,4 +159,4 @@ def contact():
 
 
 if __name__ == '__main__':
-    app.run(debug=True)
+    app.run()
