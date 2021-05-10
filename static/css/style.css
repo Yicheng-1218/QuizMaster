@@ -4,6 +4,7 @@ main {
   min-height: 100vh;
   overflow-x: auto;
   overflow-y: hidden;
+  max-width: 100%;
 }
 
 h1,h2,h3,h4,input,label{
