@@ -118,16 +118,17 @@ textarea{
     margin-top: 0!important;
   }
   #index_text{
-    max-width: 100%;
+    width: 100%;
+  }
+  #index_pic{
+    width: 100%;
   }
 }
 @media only screen and (max-width:768px) {
     #export{
       width: 95%;
     }
-    #index_pic{
-      width: auto;
-    }
+    
 }
 @media only screen and (min-width:992px){
   .tf_long_button{
