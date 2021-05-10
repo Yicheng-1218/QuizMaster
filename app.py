@@ -5,6 +5,7 @@ from flask.wrappers import Response
 from forms import *
 from format import *
 import os
+import datetime
 
 app = Flask(__name__)
 
@@ -13,6 +14,10 @@ app.config['SECRET_KEY'] = '408637147'
 
 # web cache lifetime
 # app.config['SEND_FILE_MAX_AGE_DEFAULT'] = 0
+
+# session lifetime
+app.config['PERMANENT_SESSION_LIFETIME'] = datetime.timedelta(days=7)
+session.permanent = True
 
 
 @app.before_request
@@ -125,8 +130,8 @@ def export():
     # 如果刪除表單成功送出
     if del_form.validate_on_submit():
         # 設定session試卷為空模板
-        session['quiz_map'] = quiz_map
-        session['preview_map'] = perview_map
+        session.pop('quiz_map')
+        session.pop('preview_map')
         return redirect('/')
     if export_form.validate_on_submit():
         def generate():
