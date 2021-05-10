@@ -129,7 +129,12 @@ textarea{
     #export{
       width: 95%;
     }
-    
+    #index_text{
+      width: 100%;
+    }
+    #index_pic{
+      width: 100%;
+    }
 }
 @media only screen and (min-width:992px){
   .tf_long_button{
