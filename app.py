@@ -17,11 +17,11 @@ app.config['SECRET_KEY'] = '408637147'
 
 # session lifetime
 app.config['PERMANENT_SESSION_LIFETIME'] = datetime.timedelta(days=7)
-session.permanent = True
 
 
 @app.before_request
 def session_create():
+    session.permanent = True
     # 如果session不存在則建立
     if session.get('quiz_map') == None:
         print('create quiz_map')
