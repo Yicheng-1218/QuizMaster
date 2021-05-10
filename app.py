@@ -21,7 +21,9 @@ app.config['PERMANENT_SESSION_LIFETIME'] = datetime.timedelta(days=7)
 
 @app.before_request
 def session_create():
+    # 設定session存在時間延長，而不是關閉瀏覽器就刪除
     session.permanent = True
+
     # 如果session不存在則建立
     if session.get('quiz_map') == None:
         print('create quiz_map')
