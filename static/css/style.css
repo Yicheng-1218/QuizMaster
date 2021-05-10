@@ -122,6 +122,9 @@ textarea{
     #export{
       width: 95%;
     }
+    #index_pic{
+      width: auto;
+    }
 }
 @media only screen and (min-width:992px){
   .tf_long_button{
@@ -132,5 +135,8 @@ textarea{
   }
   #export{
     width: 100vh;
+  }
+  #index_pic{
+    width: 720px;
   }
 }
