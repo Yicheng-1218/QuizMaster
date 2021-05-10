@@ -17,6 +17,7 @@ app.config['SECRET_KEY'] = '408637147'
 
 # session lifetime
 app.config['PERMANENT_SESSION_LIFETIME'] = datetime.timedelta(days=7)
+session.permanent = True
 
 
 @app.before_request
