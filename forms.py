@@ -9,7 +9,7 @@ class CreateTF(FlaskForm):
     content = TextAreaField('題目內容', validators=[DataRequired()])
 
     True_or_False = RadioField('正確答案', choices=[
-        ('T', 'TRUE'), ('F', 'FALSE')])
+        ('T', 'TRUE'), ('F', 'FALSE')], validators=[DataRequired()])
 
     # 添加按鈕
     submit = SubmitField('添加')
@@ -20,19 +20,19 @@ class CreateMC(FlaskForm):
     content = TextAreaField('題目內容', validators=[DataRequired()])
 
     # 選項A
-    A = TextAreaField('A')
+    A = TextAreaField('A', validators=[DataRequired()])
 
     # 選項B
-    B = TextAreaField('B')
+    B = TextAreaField('B', validators=[DataRequired()])
 
     # 選項C
-    C = TextAreaField('C')
+    C = TextAreaField('C', validators=[DataRequired()])
 
     # 選項B
-    D = TextAreaField('D')
+    D = TextAreaField('D', validators=[DataRequired()])
 
     Which_True = RadioField('正確答案', choices=[
-        ('A', 'A'), ('B', 'B'), ('C', 'C'), ('D', 'D')])
+        ('A', 'A'), ('B', 'B'), ('C', 'C'), ('D', 'D')], validators=[DataRequired()])
 
     # 添加按鈕
     submit = SubmitField('添加')
