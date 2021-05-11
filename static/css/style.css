@@ -19,6 +19,9 @@ p{
 .card{
   box-shadow: 0 0 8px 0 rgba(0, 0, 0, 0.40);
 }
+.card-header,.card-footer{
+  background-color: unset;
+}
 textarea{
   box-shadow: 0 0 4px 0 rgba(0, 0, 0, 0.20);
 }

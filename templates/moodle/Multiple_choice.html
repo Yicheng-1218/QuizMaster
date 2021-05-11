@@ -17,7 +17,7 @@
                             {{subfield(class='form-check-input')}}
                             {%for field in MC_form%}
                             {%if subfield.label.text==field.label.text%}
-                            {{field(class='form-control my-1',placeholder=field.label.text)}}
+                            {{field(class='form-control my-1',placeholder='請輸入選項'+field.label.text)}}
                             {%endif%}
                             {%endfor%}
                         </div>
