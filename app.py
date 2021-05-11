@@ -51,7 +51,8 @@ def method_page(method):
     TF_form = CreateTF()
     MC_form = CreateMC()
     SA_form = CreateSA()
-
+    del_form = delete_quiz()
+    export_form = export_quiz()
     # 印出session內題目表
     print(session['quiz_map'])
 
@@ -110,6 +111,9 @@ def method_page(method):
         # 引導回SA頁
         return redirect('short_ans')
 
+    # 檢查匯出表單
+    export(del_form=del_form, export_form=export_form)
+
     # 檢查get路由引導路徑
     if method == 'True_or_False':
         TF_count = session['quiz_map']['TF']['count']
@@ -124,11 +128,7 @@ def method_page(method):
         return '404 PAGE NOT FOUND'
 
 
-@app.route('/export', methods=['GET', 'POST'])
-def export():
-    del_form = delete_quiz()
-    export_form = export_quiz()
-
+def export(del_form, export_form):
     # 如果刪除表單成功送出
     if del_form.validate_on_submit():
         # 設定session試卷為空模板

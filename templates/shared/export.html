@@ -1,0 +1,36 @@
+<div class="modal fade" id="export-modal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">功能選單</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <div class="container-fluid">
+                    <div class="row">
+                        <div class="col-6 text-center">
+                            <form name='form' method="POST">
+                                <h5 class="card-title">下載暫存試卷</h5>
+                                <p class="card-text">匯出gift格式檔案</p>
+                                {{export_form.submit(class="btn btn-success")}}
+                                {{export_form.hidden_tag()}}
+                            </form>
+                        </div>
+                        <div class="col-6 text-center">
+                            <form method="POST">
+                                <h5 class="card-title">刪除暫存試卷</h5>
+                                <p class="card-text">
+                                    {{del_form.confirm.label}}
+                                    {{del_form.confirm}}
+                                </p>
+
+                                {{del_form.submit(class="btn btn-danger")}}
+                                {{del_form.hidden_tag()}}
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
