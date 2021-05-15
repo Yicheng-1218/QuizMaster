@@ -25,6 +25,16 @@ p{
 textarea{
   box-shadow: 0 0 4px 0 rgba(0, 0, 0, 0.20);
 }
+.con-space-0{
+  margin-left: 0;
+  margin-right: 0;
+}
+.offcanvas-end{
+  width: 800px;  
+}
+table{
+  word-wrap: break-word;
+}
 
 .b-example-divider {
   height: 3rem;
@@ -100,24 +110,7 @@ textarea{
   #sidebar{
     max-width: 35%;
   }
-  #TF_card {
-    transform: translate(0%,15%)!important;
-    position: unset!important; 
-  }
-  #MC_card{
-    transform: translate(0%,5%)!important;
-    position: unset!important; 
-    margin: auto;
-  }
-  #hanging-icons{
-    padding-right: 0.2rem!important;
-    padding-left: 0.5rem!important;
-    padding-top: unset!important;
-    padding-bottom: unset!important;
-  }
-  #hanging-icons .row{
-    padding-top: unset!important;
-  }
+  
   #jumbo{
     margin-top: 0!important;
   }
@@ -140,9 +133,6 @@ textarea{
     }
 }
 @media only screen and (min-width:992px){
-  .tf_long_button{
-    width: 70vh;
-  }
   #sidebar{
     max-width: 15%;
   }

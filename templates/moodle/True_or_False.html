@@ -1,35 +1,110 @@
 {%extends 'shared/layout.html'%}
 {%block body%}
 
-<div class="container position-relative">
-    <div id='TF_card' class="position-absolute top-50 start-50 translate-middle">
-        <div class="card text-center">
-            <form method="POST">
-                <div class="card-header my-3">
+<div class="container">
+    <!-- 功能列表 -->
+    <div class="row mt-3">
+        <div class="btn-group" role="group" aria-label="Button group with nested dropdown">
+            <button class="btn btn-secondary" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight"
+                aria-controls="offcanvasRight">
+                預覽題目
+            </button>
+            <button type="button" class="btn btn-secondary" data-bs-toggle="modal" data-bs-target="#export-modal">
+                功能
+            </button>
 
-                    <h5 class="card-title">{{TF_form.content.label}}</h5>
-                    {{TF_form.content(class='form-control',placeholder='請輸入題目內容')}}
-                </div>
-                <div class="card-body my-3">
+            <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1"
+                data-bs-toggle="dropdown" aria-expanded="false">
+                頁面表單數量
 
-                    {%for subfield in TF_form.True_or_False%}
-                    <div class="form-check form-check-inline">
-                        {{subfield(class='form-check-input')}}
-                        {{subfield.label(class="form-check-label me-3")}}
-                    </div>
-                    {%endfor%}
-                    {{TF_form.submit(class='btn btn-primary input-group mt-3 tf_long_button')}}
-                    {{TF_form.hidden_tag()}}
-
-                </div>
-                <div class="card-footer text-muted my-3">
-                    {{TF_count}}個已添加
-                </div>
-            </form>
-
-
+            </button>
+            <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+                <li><a class="dropdown-item" href="1">1</a></li>
+                <li><a class="dropdown-item" href="5">5</a></li>
+                <li><a class="dropdown-item" href="10">10</a></li>
+            </ul>
         </div>
     </div>
+    <!-- 試題列表 -->
+    <div class="row mb-5">
+        <div class="col-12">
+            <hr>
+            <div class="text-center">
+                <form method="post">
+                    <table class="table table-secondary table-striped">
+                        <thead>
+                            <tr>
+                                <th>#</th>
+                                <th>題目</th>
+                                <th>答案</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {%for field in TF_form%}
+                            {%if field != TF_form.submit and field != TF_form.csrf_token%}
+                            <tr>
+                                <td>
+                                    {{loop.index-1}}{{field.csrf_token}}
+                                </td>
+                                <td>
+                                    {{field.content(class="form-control",placeholder="請輸入題目")}}
+                                </td>
+                                <td class="position-relative">
+                                    {%for subfield in field.True_or_False%}
+
+                                    <span class="me-3">{{subfield(class="form-check-input")}}{{subfield.label}}</span>
+
+                                    {%endfor%}
+                                </td>
+                            </tr>
+                            {%endif%}
+                            {%endfor%}
+                        </tbody>
+                    </table>
+                    {{TF_form.submit(class='btn btn-outline-primary input-group')}}
+                    {{TF_form.hidden_tag()}}
+                </form>
+            </div>
+        </div>
+    </div>
+
 </div>
 
+
+{% include 'shared/export.html' %}
+<div class="offcanvas offcanvas-end" data-bs-scroll="true" data-bs-backdrop="false" tabindex="-1" id="offcanvasRight"
+    aria-labelledby="offcanvasRightLabel">
+    <div class="offcanvas-header">
+        <h5 id="offcanvasRightLabel">預覽</h5>
+        <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+    </div>
+    <div class="offcanvas-body px-4">
+        <!-- 是非題table -->
+        <table class="table">
+            <thead>
+                <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">題目</th>
+                    <th scope="col">答案</th>
+                </tr>
+            </thead>
+            <tbody>
+                {%for data in pm['TF']['list']%}
+                <tr>
+                    <th scope="row">{{loop.index}}</th>
+                    <td>{{data[0]}}</td>
+                    <td>{{data[1]}}</td>
+                </tr>
+                {%endfor%}
+            </tbody>
+            <tfoot>
+                <tr>
+                    <th>Total</th>
+                    <td></td>
+                    <td>{{pm['TF']['count']}}</td>
+                </tr>
+            </tfoot>
+        </table>
+    </div>
+</div>
 {%endblock%}

@@ -1,6 +1,6 @@
 from itertools import product
 from flask_wtf import FlaskForm
-from wtforms import StringField, IntegerField, SubmitField, BooleanField, SelectField, TextAreaField, FloatField, RadioField
+from wtforms import StringField, IntegerField, SubmitField, BooleanField, SelectField, TextAreaField, FloatField, RadioField, FormField
 from wtforms.validators import DataRequired, NumberRange
 
 
@@ -9,10 +9,7 @@ class CreateTF(FlaskForm):
     content = TextAreaField('題目內容', validators=[DataRequired()])
 
     True_or_False = RadioField('正確答案', choices=[
-        ('T', 'TRUE'), ('F', 'FALSE')], validators=[DataRequired()])
-
-    # 添加按鈕
-    submit = SubmitField('添加')
+        ('T', '正確'), ('F', '錯誤')], validators=[DataRequired()])
 
 
 class CreateMC(FlaskForm):
@@ -34,17 +31,12 @@ class CreateMC(FlaskForm):
     Which_True = RadioField('正確答案', choices=[
         ('A', 'A'), ('B', 'B'), ('C', 'C'), ('D', 'D')], validators=[DataRequired()])
 
-    # 添加按鈕
-    submit = SubmitField('添加')
-
 
 class CreateSA(FlaskForm):
     # 題目內容
     content = TextAreaField('題目內容', validators=[DataRequired()])
     # 題目內容
     answer_box = TextAreaField('正確答案', validators=[DataRequired()])
-    # 添加按鈕
-    submit = SubmitField('添加')
 
 
 class delete_quiz(FlaskForm):

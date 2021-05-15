@@ -1,45 +1,124 @@
 {%extends 'shared/layout.html'%}
 {%block body%}
-<div class="container position-relative">
-    <div id='MC_card' class="position-absolute top-50 start-50 translate-middle">
-        <div class="card text-center">
-            <form method="POST">
-                <div class="card-header my-3">
 
-                    <h5 class="card-title">{{MC_form.content.label}}</h5>
-                    {{MC_form.content(class='form-control',placeholder='請輸入題目內容')}}
-                </div>
-                <div class="card-body my-3">
+<div class="container">
+    <!-- 功能列表 -->
+    <div class="row mt-3">
+        <div class="btn-group" role="group" aria-label="Button group with nested dropdown">
+            <button class="btn btn-secondary" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight"
+                aria-controls="offcanvasRight">
+                預覽題目
+            </button>
+            <button type="button" class="btn btn-secondary" data-bs-toggle="modal" data-bs-target="#export-modal">
+                功能
+            </button>
 
-                    <div class="input-group mb-3">
-                        {%for subfield in MC_form.Which_True%}
-                        <div class="form-check mx-auto">
-                            {{subfield(class='form-check-input')}}
-                            {%for field in MC_form%}
-                            {%if subfield.label.text==field.label.text%}
-                            {{field(class='form-control my-1',placeholder='請輸入選項'+field.label.text)}}
+            <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1"
+                data-bs-toggle="dropdown" aria-expanded="false">
+                頁面表單數量
+
+            </button>
+            <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+                <li><a class="dropdown-item" href="1">1</a></li>
+                <li><a class="dropdown-item" href="5">5</a></li>
+                <li><a class="dropdown-item" href="10">10</a></li>
+            </ul>
+        </div>
+    </div>
+
+    <!-- 試題表單 -->
+    <div class="row mb-5">
+        <div class="col-12">
+            <hr>
+            <div class="text-center">
+                <form method="POST">
+                    <table class="table table-secondary table-striped">
+                        <thead>
+                            <tr>
+                                <th scope="col">#</th>
+                                <th scope="col">題目</th>
+                                <th scope="col">選項A</th>
+                                <th scope="col">選項B</th>
+                                <th scope="col">選項C</th>
+                                <th scope="col">選項D</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {%for form in MC_form%}
+                            {%if form != MC_form.submit and form != MC_form.csrf_token%}
+                            <tr>
+                                <th scope="row">{{loop.index-1}}</th>
+                                <td>{{form.content(class="form-control",placeholder="請輸入題目")}}</td>
+                                <td>{{form.A(class="form-control",placeholder="請輸入選項A")}}</td>
+                                <td>{{form.B(class="form-control",placeholder="請輸入選項B")}}</td>
+                                <td>{{form.C(class="form-control",placeholder="請輸入選項C")}}</td>
+                                <td>{{form.D(class="form-control",placeholder="請輸入選項D")}}</td>
+                            </tr>
+                            <tr>
+                                <th scope="row">{{form.csrf_token}}</th>
+                                <td><span style="color: red;">*</span>正確答案</td>
+                                {%for field in form.Which_True%}
+                                <td>{{field.label(class="me-2 ")}}{{field(class="form-check-input")}}</td>
+                                {%endfor%}
+                            </tr>
                             {%endif%}
                             {%endfor%}
-                        </div>
-                        {%endfor%}
-                    </div>
-                    {{MC_form.submit(class='btn btn-primary input-group')}}
+                        </tbody>
+                    </table>
+                    {{MC_form.submit(class='btn btn-outline-primary input-group')}}
                     {{MC_form.hidden_tag()}}
-
-                </div>
-                <div class="card-footer text-muted my-2">
-                    {{MC_count}}個已添加
-                </div>
-            </form>
-
+                </form>
+            </div>
 
         </div>
     </div>
-    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#export-modal">
-        功能
-    </button>
+
+
+
 </div>
 
 
 {% include 'shared/export.html' %}
+<div class="offcanvas offcanvas-end" data-bs-scroll="true" data-bs-backdrop="false" tabindex="-1" id="offcanvasRight"
+    aria-labelledby="offcanvasRightLabel">
+    <div class="offcanvas-header">
+        <h5 id="offcanvasRightLabel">預覽</h5>
+        <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+    </div>
+    <div class="offcanvas-body px-4">
+        <!-- 選擇題table -->
+        <table class="table">
+            <thead>
+                <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">題目</th>
+                    <th scope="col">選項A</th>
+                    <th scope="col">選項B</th>
+                    <th scope="col">選項C</th>
+                    <th scope="col">選項D</th>
+                    <th scope="col">答案</th>
+                </tr>
+            </thead>
+            <tbody>
+                {%for data in pm['MC']['list']%}
+                <tr>
+                    <th scope="row">{{loop.index}}</th>
+                    <td>{{data[0]}}</td>
+                    <td>{{data[1]}}</td>
+                    <td>{{data[2]}}</td>
+                    <td>{{data[3]}}</td>
+                    <td>{{data[4]}}</td>
+                    <td>{{data[5]}}</td>
+                </tr>
+                {%endfor%}
+            </tbody>
+            <tfoot>
+                <tr>
+                    <th colspan="6">Total</th>
+                    <td>{{pm['MC']['count']}}</td>
+                </tr>
+            </tfoot>
+        </table>
+    </div>
+</div>
 {%endblock%}

@@ -1,3 +1,4 @@
+import time
 # 記錄哪一個頁面活動中
 act_map = {
     'i_act': 'active',
@@ -102,3 +103,9 @@ def SA_format(formdata):
         temp += f'={char} '
     result += temp+'}'
     return result
+
+
+def time_format(sec_time) -> str:
+    localtime = time.localtime(sec_time)
+    return str(localtime.tm_year) + '-' + \
+        str(localtime.tm_mon) + '-' + str(localtime.tm_mday)
