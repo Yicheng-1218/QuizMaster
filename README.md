@@ -3,14 +3,6 @@
 ## Overview
 QuizMaster is a Flask-based website designed to help teachers quickly and easily create quizzes. With an intuitive UI, teachers can submit quiz forms, temporarily store questions in a list, and export them as .gift files for easy import into Moodle.
 
-## Table of Contents
-- [Introduction](#introduction)
-- [Features](#features)
-- [Installation](#installation)
-- [Usage](#usage)
-- [License](#license)
-- [Contact Information](#contact-information)
-
 ## Features
 - User-friendly UI for quiz creation
 - Temporary storage of quiz questions
